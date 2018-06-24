@@ -1,0 +1,10 @@
+[Unit]
+Description=I2P Router Service
+After=network.target
+
+[Service]
+ExecStart={{ target_path }}/i2prouter console
+User={{ target_user }}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,2 +1,39 @@
 ---
-# tasks file for grooveadelic.i2p
+- name: install pexpect
+  pip: name=pexpect state=present
+
+- name: check if I2P router already installed
+  stat: path={{ i2p_install_path }}/i2prouter
+  register: i2prouter
+
+- name: download I2P installer
+  get_url:
+    url: https://download.i2p2.de/releases/{{ i2p_version }}/i2pinstall_{{ i2p_version }}.jar
+    sha256sum: "{{ i2p_sha256sum }}"
+    dest: /tmp/i2pinstall.jar
+  when: not i2prouter.stat.readable
+
+- name: install I2P
+  become: yes
+  become_user: "{{ i2p_user }}"
+  expect:
+    command: java -jar /tmp/i2pinstall.jar -console
+    responses:
+      press 1: 1
+      target path: "{{ i2p_install_path }}"
+  when: not i2prouter.stat.readable
+
+- name: generate I2P router service file
+  template:
+    src: ../templates/i2p-router.service.j2
+    dest: /etc/systemd/system/i2p-router.service
+  when: not i2prouter.stat.readable
+  register: service_file
+
+- name: systemd daemon-reload
+  service: daemon_reload=yes
+  when: service_file is defined
+
+- name: start and enable I2P router
+  service: name=i2p-router state=started enabled=yes
+
