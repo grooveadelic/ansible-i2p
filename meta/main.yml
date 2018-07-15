@@ -1,7 +1,6 @@
 galaxy_info:
   author: grooveadelic
-  description: install I2P
-  company: 
+  description: install I2P 
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -33,11 +32,11 @@ galaxy_info:
   # platforms is a list of platforms, and each platform has a name and a list of versions.
   #
   platforms:
-   - name: RedHat
-   - name: CentOS
-   - name: Fedora
-   - name: Debian
-   - name: Ubuntu
+   - RedHat
+   - CentOS
+   - Fedora
+   - Debian
+   - Ubuntu
 
   galaxy_tags: [p2p, i2p]
     # List tags for your role here, one per line. A tag is a keyword that describes
