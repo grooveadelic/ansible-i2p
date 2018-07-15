@@ -36,4 +36,3 @@
 
 - name: start and enable I2P router
   service: name=i2p-router state=started enabled=yes
-
