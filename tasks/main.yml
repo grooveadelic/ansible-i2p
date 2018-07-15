@@ -11,7 +11,7 @@
     url: https://download.i2p2.de/releases/{{ i2p_version }}/i2pinstall_{{ i2p_version }}.jar
     sha256sum: "{{ i2p_sha256sum }}"
     dest: /tmp/i2pinstall.jar
-  when: not i2prouter.stat.readable
+  when: not i2prouter.stat.exists
 
 - name: install I2P
   become: yes
@@ -21,13 +21,13 @@
     responses:
       press 1: 1
       target path: "{{ i2p_install_path }}"
-  when: not i2prouter.stat.readable
+  when: not i2prouter.stat.exists
 
 - name: generate I2P router service file
   template:
     src: ../templates/i2p-router.service.j2
     dest: /etc/systemd/system/i2p-router.service
-  when: not i2prouter.stat.readable
+  when: not i2prouter.stat.exists
   register: service_file
 
 - name: systemd daemon-reload
