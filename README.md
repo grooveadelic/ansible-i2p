@@ -11,8 +11,8 @@ Requirements
 Role Variables
 --------------
 
- - i2p\_version - version of I2P to download and install **(default 0.9.35)**
- - i2p\_sha256sum - checksum to verify installer **(default a256e9d36a52c314b9e8d0e659d4d1b982cc9d9af8459231eda5842e4116d298)**
+ - i2p\_version - version of I2P to download and install **(default 0.9.36)**
+ - i2p\_sha256sum - checksum to verify installer **(default a6e753b98700d8d584cf8feb67141ffd1f5fd83a9968cac89c1b3dd59dc1b31f)**
  - i2p\_user - user for I2P installation and runtime. By default the .i2p config directory will also be created inside this users home directory. You will need to create this user beforehand in a pre\_tasks section, or reuse one (other than root) already available on your server **(default i2p)**
  - i2p\_install\_path - installation location for I2P, should be i2p\_user writable **(default /home/{{ i2p\_user }}/i2p)**
 
