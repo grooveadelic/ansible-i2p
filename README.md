@@ -38,4 +38,4 @@ GPLv3
 
 Bug reports, flag/toggle proposals, patches and donations[1] welcome.
 
-[1] litecoin - ltc1qudlkn0kmca4xhypz4wmkxhtzmwgm80sl93larn
+[1] monero - 89ExYaP9giHBq3hzPWBbQPCPUN174U6ZDd261QYWHka5TjAbuQSawYdUqmptepJPeSf2NLQwR1iPcWxMEBek3DmcL7ukLWd
