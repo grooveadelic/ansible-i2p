@@ -1,4 +1,5 @@
 galaxy_info:
+  role: i2p
   author: grooveadelic
   description: install I2P 
   license: GPLv3

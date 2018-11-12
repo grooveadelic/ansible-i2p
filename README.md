@@ -26,7 +26,7 @@ Example Playbook
         - geerlingguy.java 
         - geerlingguy.pip
 
-        - role: grooveadelic.ansible_i2p
+        - role: grooveadelic.i2p
           i2p_install_path: /home/i2p/router/
 
 License
