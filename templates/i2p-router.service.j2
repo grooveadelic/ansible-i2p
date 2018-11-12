@@ -3,8 +3,8 @@ Description=I2P Router Service
 After=network.target
 
 [Service]
-ExecStart={{ target_path }}/i2prouter console
-User={{ target_user }}
+ExecStart={{ i2p_install_path }}/i2prouter console
+User={{ i2p_user }}
 
 [Install]
 WantedBy=multi-user.target
