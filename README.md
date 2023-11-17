@@ -9,7 +9,10 @@ Role Variables
 --------------
 
 User for I2P installation and runtime.
-`i2p_user: i2p`
+
+```
+i2p_user: i2p
+```
 
 
 Example Playbook
