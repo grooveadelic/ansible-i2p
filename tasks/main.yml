@@ -1,6 +1,12 @@
 ---
-- name: install pexpect
-  pip: name=pexpect state=present
+- name: Install dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "python3-pexpect"
+    - "git"
+    - "default-jre"
 
 - name: check if I2P router already installed
   stat: path={{ i2p_install_path }}/i2prouter
