@@ -1,10 +1,8 @@
 ---
 - name: Install dependencies
   apt:
-    name: "{{ item }}"
+    pkg: "apt-transport-https"
     state: present
-  loop:
-    - "apt-transport-https"
 
 - name: Check if i2p router is already installed
   stat:
@@ -15,6 +13,7 @@
   user:
     name: "{{ i2p_user }}"
     state: present
+    createhome: true
 
 - include_tasks:
     file: apt_add.yml
