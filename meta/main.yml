@@ -1,19 +1,13 @@
 galaxy_info:
-  author: grooveadelic
-  description: install I2P 
+  author: nols
+  description: Install i2p
   license: GPLv3
   min_ansible_version: 1.2
   platforms:
-    - name: EL
-      versions:
-        - all
     - name: Debian
       versions:
         - all
     - name: Ubuntu
-      versions:
-        - all
-    - name: Fedora
       versions:
         - all
   galaxy_tags:
