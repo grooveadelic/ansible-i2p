@@ -6,7 +6,7 @@
   loop:
     - "apt-transport-https"
 
-- name: check if I2P router already installed
+- name: Check if i2p router is already installed
   stat:
     path: "{{ i2p_install_path }}/i2prouter"
   register: i2prouter
