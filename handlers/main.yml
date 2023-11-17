@@ -1,2 +1,5 @@
 ---
-# handlers file for grooveadelic.i2p
+
+- name: Reload systemd-daemon
+  systemd_service:
+    state: reloaded

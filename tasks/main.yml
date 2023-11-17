@@ -27,16 +27,12 @@
     update_cache: true
   when: not i2prouter.stat.exists
 
-- name: generate I2P router service file
+- name: Generate i2p router service file
   template:
-    src: ../templates/i2p-router.service.j2
+    src: templates/i2p-router.service.jinja
     dest: /etc/systemd/system/i2p-router.service
-  when: not i2prouter.stat.exists
-  register: service_file
+  notify: Reload systemd-daemon
 
-- name: systemd daemon-reload
-  service: daemon_reload=yes
-  when: service_file is defined
 
 - name: Start and enable i2p router
   service:
