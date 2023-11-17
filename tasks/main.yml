@@ -40,5 +40,8 @@
   service: daemon_reload=yes
   when: service_file is defined
 
-- name: start and enable I2P router
-  service: name=i2p-router state=started enabled=yes
+- name: Start and enable i2p router
+  service:
+    name: "i2p-router"
+    state: started
+    enabled: true
