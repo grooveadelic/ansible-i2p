@@ -23,7 +23,7 @@
     pkg:
       - "i2p"
       - "i2p-keyring"
-    update_cache: true
+  update_cache: true
   when: not i2prouter.stat.exists
 
 - name: Generate i2p router service file
