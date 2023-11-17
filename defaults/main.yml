@@ -1,5 +1,3 @@
 ---
-i2p_version: 0.9.38
-i2p_sha256sum: 9e73dbdfb8cefce7dbe876842144b49b39f555590cdd2955e772298294d33b37
+
 i2p_user: i2p
-i2p_install_path: "/home/{{ i2p_user }}/i2p"
