@@ -4,34 +4,27 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "python3-pexpect"
-    - "git"
-    - "default-jre"
+    - "apt-transport-https"
 
 - name: check if I2P router already installed
-  stat: path={{ i2p_install_path }}/i2prouter
+  stat:
+    path: "{{ i2p_install_path }}/i2prouter"
   register: i2prouter
-
-- name: download I2P installer
-  get_url:
-    url: https://download.i2p2.de/releases/{{ i2p_version }}/i2pinstall_{{ i2p_version }}.jar
-    sha256sum: "{{ i2p_sha256sum }}"
-    dest: /tmp/i2pinstall.jar
-  when: not i2prouter.stat.exists
 
 - name: "Create i2p user: {{ i2p_user }}"
   user:
     name: "{{ i2p_user }}"
     state: present
 
-- name: install I2P
-  become: yes
-  become_user: "{{ i2p_user }}"
-  expect:
-    command: java -jar /tmp/i2pinstall.jar -console
-    responses:
-      press 1: 1
-      target path: "{{ i2p_install_path }}"
+- include_tasks:
+    file: apt_add.yml
+
+- name: Install i2p
+  apt:
+    pkg:
+      - "i2p"
+      - "i2p-keyring"
+    update_cache: true
   when: not i2prouter.stat.exists
 
 - name: generate I2P router service file

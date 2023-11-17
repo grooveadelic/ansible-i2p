@@ -1,0 +1,28 @@
+---
+
+- name: Make GPG temp dir
+  tempfile:
+    state: directory
+  register: gpg_tempdir
+
+- name: Get GPG signing key
+  get_url:
+    url: "https://geti2p.net/_static/i2p-archive-keyring.gpg"
+    dest: "/usr/share/keyrings/i2p-archive-keyring.gpg"
+
+- name: Gather dpkg architecture info
+  shell: "dpkg --print-architecture"
+  register: dpkg_content
+  changed_when: false
+
+- name: Set system info
+  set_fact:
+    os_version: "{{ hostvars[inventory_hostname].ansible_distribution | lower }}"
+    os_version_codename: "{{ hostvars[inventory_hostname].ansible_distribution_release | lower }}"
+    os_arch: "{{ dpkg_content.stdout | lower }}"
+  changed_when: false
+
+- name: Add i2p sources list
+  template:
+    src: templates/i2p.list.jinja
+    dest: /etc/apt/sources.list.d/i2p.list
