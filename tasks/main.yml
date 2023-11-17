@@ -19,6 +19,11 @@
     dest: /tmp/i2pinstall.jar
   when: not i2prouter.stat.exists
 
+- name: "Create i2p user: {{ i2p_user }}"
+  user:
+    name: "{{ i2p_user }}"
+    state: present
+
 - name: install I2P
   become: yes
   become_user: "{{ i2p_user }}"
